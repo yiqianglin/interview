@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var user = {};
+        var proxy = new Proxy(user, {
+            get(target, property) {
+                return property in target ? target[property] : 15;
+            },
+            set(target, property, value){
+                if (property === 'age') {
+                    if (!Number.isInteger(value)) {
+                        console.error('The age is not an integer');
+                        return;
+                    }
+                    if (value > 200) {
+                        console.warn('The age seems invalid');
+                        return;
+                    }
+                    target[property] = value;
+                }
+            }
+        });
+        proxy.name = '小强';
+        proxy.firstName = "林";
+        console.log(proxy.name, proxy.firstName, proxy.age);
+        console.log(user);
+        proxy.age = 10086;
+        console.log(user);
+        proxy.age = 25;
+        console.log(user);
+    </script>
+</body>
+</html>

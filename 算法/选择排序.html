@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择排序</title>
+</head>
+<body>
+	<script>
+		// 每次遍历，找到最小的值，然后排在最前面(与第N个数据进行交换)
+		function selectionSort(arr) {
+		    var len = arr.length;
+		    var minIndex, temp;
+		    for (var i = 0; i < len - 1; i++) {
+		        minIndex = i;	//初始化最小值，为还未排列的第一个值
+		        for (var j = i + 1; j < len; j++) {
+		            if (arr[j] < arr[minIndex]) {     //寻找最小的数
+		                minIndex = j;                 //将最小数的索引保存
+		            }
+		        }
+		        temp = arr[i];
+		        arr[i] = arr[minIndex];
+		        arr[minIndex] = temp;
+		    }
+		    return arr;
+		}
+		var array = [2,8,17,4,3,22,12,9,7,6];
+		console.log(selectionSort(array));
+	</script>
+</body>
+</html>

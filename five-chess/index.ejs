@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+    <div class="content">
+        <h1 class="game-title">chess</h1>
+        <div class="main-container">
+            <div class="center-con">
+                <canvas id="chess-container-canvas" width="450px" height="450px">你的浏览器还不支持canvas</canvas>
+                <div id="chess-container-dom">
+                    <div class="virtual-chess-con" id="virtual-chess-con"></div>
+                    <div class="real-chess-con" id="real-chess-con"></div>
+                </div>
+
+                <div class="right selection">
+                    <a href="javascript:void(0);" class="common-btn retract">悔棋</a>
+                    <a href="javascript:void(0);" class="common-btn unRetract">撤销悔棋</a>
+                    <a href="javascript:void(0);" class="common-btn restart">重置棋盘</a>
+                    <a href="javascript:void(0);" class="common-btn changeModel">切换模式</a>
+                </div>
+
+                <div class="clearfloat"></div>
+
+                <div class="record-title">游戏记录：</div>
+                <div class="record-con" id="record"></div>
+            </div>
+
+            <div class="notice-panel">
+                <div class="notice-bg"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

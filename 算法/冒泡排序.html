@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冒泡排序</title>
+</head>
+<body>
+	<script>
+		// 每次比较相邻两个值，大的靠后。
+		function bubbleSort(arr) {
+			for (var i = 0; i < arr.length; i++) {
+				console.log(i);
+				for (var j = 0; j < arr.length -1 - i; j ++) {	//因为最后的，已经冒泡过的，肯定是最大的。arr.length - 1 是因为有一个arr[j+1]
+					if (arr[j] > arr[j + 1]) {
+						var temp = arr[j];
+						arr[j] = arr[j + 1];
+						arr[j + 1] = temp;
+					}
+				}
+			};
+		}
+
+
+		var array = [2,8,17,4,3,22,12,9,7,6];
+		console.log(array);
+		bubbleSort(array);	
+		console.log(array);
+	</script>
+</body>
+</html>

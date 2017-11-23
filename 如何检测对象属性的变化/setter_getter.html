@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在定义时候加入setter和getter
+        var person = {
+            name: '小强',
+            firstName: '林',
+            get totalName() {
+                return this.firstName + this.name;
+            },
+            set totalName(a) {
+                this.name = a;
+            }
+        }
+
+        console.log(person);
+        console.log(person.name, person.firstName);
+        console.log(person.totalName);
+        person.totalName = 'henix';
+        console.log(person);
+
+
+        // 在定义之后再加入getter和setter
+        var animal = {
+            label: '猫科动物',
+            name: '剑齿虎'
+        }
+        Object.defineProperty(animal, 'totalName', {
+            get: function(){
+                return this.label + ' > ' + this.name;
+            },
+            set: function({label, name}){
+                this.label = label;
+                this.name = name;
+            }
+        });
+        console.log(animal.totalName);
+        animal.totalName = {label: '哺乳动物', name: '海豚'};
+        console.log(animal.totalName);
+
+        // defineProperties 定义多个
+        Object.defineProperties(person, {
+            totalName2: {
+                get: function(){
+                    return this.firstName + this.name;
+                },
+                set: function(a) {
+                    this.name = a;
+                    console.log("名字变成" + this.totalName);
+                }
+            }
+        }, {
+            address: {
+                value: '深圳市'
+            }
+        });
+
+        console.log(person.totalName2, person.address);
+        person.totalName2 = 25;
+        console.log(person.totalName2);
+
+    </script>
+</body>
+</html>
